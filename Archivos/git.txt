@@ -1,0 +1,30 @@
+git init = crear un proyecto nuevo con git
+git add <file> = pasar los archivos del working directory al staging area
+git status = ver el estado de los archivos
+git commit = pasar los archivos del staging area al respository 
+git push = subir los archivos a un repositorio remoto para que los desarrolladores con permisos de modificar el código lo puedan hacer
+git pull = trae los cambios que han hecho los damás desarrolladores
+git clone = realiza una copia del servidor central donde está el código a mi equipo local
+git checkout -- <file> = revertir los cambios del archivo
+git diff <file> = mirar los cambios del archivo
+git log = mirar los commit que se han realizado para no perder la trazabilidad 
+git commit -m <mensaje> = pasar los archivos del staging area al respository con un mensaje 
+.gitignore = ignorar archivos y carpetas para que no se suban al repositorio 
+git branch <name> = version alternativa de código fuente
+git checkout <name> = cambiar de versión alternativa del código fuente 
+git remote add origin https://github.com/wpaternina/<name project repository> = conectar git con github
+git push -u origin <rama> = subir proyecto al repositorio en github
+git log --oneline = visualizar de manera más comparta un commit
+git restore --staged <name> = quitar archivo del staging area
+git checkout <id_commit> = moverse de un commit a otro
+git checkout master = moverse al commit más actual
+git diff <id_commit_punto_inicial> <id_commit_punto_final> = realizar una comparación entre dos commit
+git switch <name_rama> = moverse de una rama a otra 
+git merge <name_rama> = unir cambios de ramas OJO debes tener en cuenta la rama destino y que cambios quieres.
+ 
+
+ESTADOS DE GIT
+*********************************************************************************
+working directory = mis archivos en mi equipo local
+staging area = preparar archivos para subir al servidor de control de versiones
+respository = subir los archivos al repositorio

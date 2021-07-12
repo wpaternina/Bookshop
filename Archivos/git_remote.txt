@@ -1,0 +1,4 @@
+git remote add origin https://github.com/wpaternina/AppMusic.git
+git push -u origin master
+
+LAPTOP-9AIHV3IC\SQLEXPRESS

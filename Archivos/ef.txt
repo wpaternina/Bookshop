@@ -1,0 +1,23 @@
+EntityFrameworkCore
+EntityFrameworkCore.SqlServer
+EntityFrameworkCore.Tools
+
+Virtual: La palabra clave virtual se usa para modificar un método, propiedad, indexador o declaración de evento y permitir que se anule en una clase derivada. Por ejemplo, este método puede ser reemplazado por cualquier clase que lo herede
+
+
+DbContext: Es la clase encargada de interactuar con la base de datos mediante el EF.
+
+************CREAR BASE DE DATOS EF****************
+Add-Migration "Initial"
+update-database
+
+
+*********CREAR Y EJECUTAR ARCHIVOS DE MIGRACION********************
+dotnet tool install --global dotnet-ef --version 3.1.1
+dotnet ef migrations add IdentityCoreInicial -p Api/ -s Api/
+Descomentar el metodo Main para ejecutar la migración
+Entrar en la carpeta o en el proyecto Api
+dotnet watch run
+Descomentar el userManager
+Descomentar el InsertarData
+dotnet run watch
