@@ -1,4 +1,6 @@
-﻿using DTO;
+﻿using Api.Services.Autor;
+using DTO;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Autor;
@@ -17,6 +19,14 @@ namespace Controllers
         public async Task<ActionResult<List<AutorDTO>>> ObtenerAutores() 
         {
             return await Mediator.Send(new ConsultaAutor.ListaAutor());
+        }
+
+        // http://localhost:5000/api/Autor
+        [HttpPost]
+        //[Authorize]
+        public async Task<ActionResult<Unit>> GuardarAutores(NuevoAutor.RegistrarAutor autor) 
+        {
+            return await Mediator.Send(autor);
         }
     }
 }

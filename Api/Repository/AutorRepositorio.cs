@@ -31,7 +31,7 @@ namespace Repository
         public async Task<IEnumerable<AutorDTO>> ObtenerAutores()
         {
             IEnumerable<AutorDTO> Atores = null;
-            var sp = "sp_ObtenerAutores";
+            var sp = @"sp_ObtenerAutores";
             try
             {
                 var con = _fabricaConexion.ConectarSQLServer();
@@ -39,7 +39,7 @@ namespace Repository
             }
             catch (Exception ex)
             {
-                throw new Exception("Error en la transacción con la base de datos", ex);
+                throw new Exception("Error al cargar la lista de autores ", ex);
             }
             finally 
             {
@@ -54,9 +54,25 @@ namespace Repository
             throw new System.NotImplementedException();
         }
 
-        public Task<int> RegistrarAutor(AutorDTO autor)
+        public async Task<int> RegistrarAutor(string NombreAutor, DateTime FechaNacimiento)
         {
-            throw new System.NotImplementedException();
+            var sp = @"sp_GuardarAutores";
+            try
+            {
+                var con = _fabricaConexion.ConectarSQLServer();
+                var result = await con.ExecuteAsync(sp, 
+                                          new {NombreAutor = NombreAutor, 
+                                               FechaNacimiento = FechaNacimiento}, 
+                                          commandType: CommandType.StoredProcedure);
+
+                _fabricaConexion.CerrarConexion();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudo guardar el autor ", ex);
+            }
         }
     }
 }
