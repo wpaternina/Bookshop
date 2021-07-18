@@ -18,14 +18,47 @@ namespace Repository
         }
 
 
-        public Task<int> EliminarAutor(int AutorId)
+        public async Task<int> EliminarAutor(int AutorId)
         {
-            throw new System.NotImplementedException();
+            var sp = @"sp_EliminarAutores";
+            try
+            {
+                var con = _fabricaConexion.ConectarSQLServer();
+                var result = await con.ExecuteAsync(sp,
+                                                new
+                                                {
+                                                    AutorId = AutorId
+                                                }, commandType: CommandType.StoredProcedure);
+
+                _fabricaConexion.CerrarConexion();
+                return result;
+            } 
+            catch (Exception ex) 
+            {
+                throw new Exception("No se pudo eliminar el autor ", ex);
+            }
         }
 
-        public Task<int> ModificarAutor(AutorDTO autor)
+        public async Task<int> ModificarAutor(int AutorId, string NombreAutor, DateTime FechaNacimiento)
         {
-            throw new System.NotImplementedException();
+            var sp = @"sp_EditarAutores";
+            try
+            {
+                var con = _fabricaConexion.ConectarSQLServer();
+                var result =  await con.ExecuteAsync(sp, 
+                                              new { 
+                                                AutorId = AutorId,
+                                                NombreAutor = NombreAutor,
+                                                FechaNacimiento = FechaNacimiento
+                                              }, commandType: CommandType.StoredProcedure);
+
+                _fabricaConexion.CerrarConexion();
+                return result;
+            }
+            catch (Exception ex) 
+            {
+                throw new Exception("No se pudo modificar el autor ", ex);
+            }
         }
 
         public async Task<IEnumerable<AutorDTO>> ObtenerAutores()
@@ -49,9 +82,25 @@ namespace Repository
             return Atores;
         }
 
-        public Task<AutorDTO> ObtenerAutorPorId(int AutorId)
+        public async Task<AutorDTO> ObtenerAutorPorId(int AutorId)
         {
-            throw new System.NotImplementedException();
+            AutorDTO Atores = null;
+            var sp = @"sp_ObtenerAutoresById";
+            try
+            {
+                var con = _fabricaConexion.ConectarSQLServer();
+                Atores = await con.QueryFirstAsync<AutorDTO>(sp, new { AutorId = AutorId }, commandType: CommandType.StoredProcedure);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar la información del autor ", ex);
+            }
+            finally 
+            {
+                _fabricaConexion.CerrarConexion();
+            }
+
+            return Atores;
         }
 
         public async Task<int> RegistrarAutor(string NombreAutor, DateTime FechaNacimiento)

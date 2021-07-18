@@ -10,7 +10,7 @@ namespace Interface
         Task<IEnumerable<AutorDTO>> ObtenerAutores();
         Task<AutorDTO> ObtenerAutorPorId(int AutorId);
         Task<int> RegistrarAutor(string NombreAutor, DateTime FechaNacimiento);
-        Task<int> ModificarAutor(AutorDTO autor);
+        Task<int> ModificarAutor(int AutorId, string NombreAutor, DateTime FechaNacimiento);
         Task<int> EliminarAutor(int AutorId);
     }
 }

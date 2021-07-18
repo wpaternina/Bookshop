@@ -38,7 +38,7 @@ namespace Api
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            // Cadena de conexión con EntityFramework
+            // Cadena de conexión de SQL Server con EntityFramework
             services.AddDbContext<BookshopContext>(opt => {
                 opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
