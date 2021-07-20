@@ -11,7 +11,7 @@ namespace Api.Controllers
     {
         // http://localhost:5000/api/Usuario/registrar
         [HttpPost("registrar")]
-        public async Task<ActionResult<UsuarioData>> RegistrarUsuario(Registrar.RegistrarUsuario parametros)
+        public async Task<ActionResult<UsuarioData>> RegistrarUsuario(ManejoUsuarios.RegistrarUsuario parametros)
         {
             return await Mediator.Send(parametros);
         }

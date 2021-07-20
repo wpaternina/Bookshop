@@ -60,8 +60,13 @@ namespace Api
             }).AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Login>());
 
             // Injection Identity
+            // Injection Users
             var builder = services.AddIdentityCore<Usuario>();
             var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+            // Injection Roles
+            identityBuilder.AddRoles<IdentityRole>();
+            // Inicializar el UserClaimsPrincipalFactory para el webtoken
+            identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<Usuario, IdentityRole>>();
             identityBuilder.AddEntityFrameworkStores<BookshopContext>();
             identityBuilder.AddSignInManager<SignInManager<Usuario>>();
             services.TryAddSingleton<ISystemClock, SystemClock>();

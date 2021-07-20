@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Api.Security.Autenticacion
 {
-    public class Registrar
+    public class ManejoUsuarios
     {
         public class RegistrarUsuario : IRequest<UsuarioData> 
         {
