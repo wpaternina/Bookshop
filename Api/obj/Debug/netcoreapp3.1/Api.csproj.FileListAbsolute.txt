@@ -45,7 +45,11 @@ C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Mic
 C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
 C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
 C:\Users\William patermina\source\repos\Bookshop\Api\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll

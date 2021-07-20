@@ -1,4 +1,6 @@
-﻿using Api.Services.Autor;
+﻿using Api.DTO;
+using Api.Services.Autor;
+using Api.Services.Paginacion;
 using DTO;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -52,6 +54,13 @@ namespace Controllers
         public async Task<ActionResult<AutorDTO>> ObtenerAutoresById(int AutorId)
         {
             return await Mediator.Send(new ConsultaAutorPorId.ListaAutorPorId { AutorId  = AutorId });
+        }
+
+        [HttpPost("report")]
+        //[Authorize]
+        public async Task<ActionResult<PaginacionDTO>> Report(PaginacionAutor.PaginacionListaAutor DataPaginacion) 
+        {
+            return await Mediator.Send(DataPaginacion);
         }
     }
 }

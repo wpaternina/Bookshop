@@ -2,8 +2,10 @@ using Api.Interface;
 using Api.Middleware;
 using Api.Models;
 using Api.Persistences;
+using Api.Repository;
 using Api.Security.Autenticacion;
 using Api.Security.Token;
+using Api.Services.Paginacion;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using Interface;
@@ -21,6 +23,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Persistences;
 using Repository;
 using Services.Autor;
@@ -83,9 +86,20 @@ namespace Api
             services.AddScoped<IJwtGenerador, JwtGenerador>();
             services.AddScoped<IUsuarioSesion, UsuarioSesion>();
             services.AddScoped<IAutor, AutorRepositorio>();
+            services.AddScoped<IPaginacion, PaginacionRepositorio>();
 
             //Crear mapeos personalizados de una clase
             services.AddAutoMapper(typeof(ConsultaAutor.ManejadorAutor));
+
+            //Injection Swagger
+            services.AddSwaggerGen(s => {
+                s.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Bookshop",
+                    Version = "v1"
+                });
+                s.CustomSchemaIds(s => s.FullName);
+            });
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -104,6 +118,11 @@ namespace Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(s => {
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Bookshop v1");
             });
         }
     }

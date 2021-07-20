@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Api.DTO;
+using Api.Models;
+using AutoMapper;
 using DTO;
 using Models;
 
@@ -9,6 +11,7 @@ namespace Api
         public MappingProfile() 
         {
             CreateMap<Autor, AutorDTO>();
+            CreateMap<Paginacion, PaginacionDTO>();
         }
     }
 }
